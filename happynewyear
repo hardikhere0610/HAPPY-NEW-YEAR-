@@ -1,0 +1,104 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>✨ Happy New Year 2026 ✨</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+body{height:100vh;background:radial-gradient(circle at top,#1b2735,#090a0f);overflow:hidden;color:#fff}.slides{display:flex;width:800vw;height:100vh;transition:transform 1.2s ease-in-out} section{width:100vw;height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:25px}
+
+h1,h2{margin-bottom:15px;animation:glow 2s infinite alternate} p{max-width:680px;line-height:1.9;font-size:16px;opacity:.95}
+
+button{margin-top:25px;padding:14px 36px;border:none;border-radius:40px;background:linear-gradient(45deg,#ff9a9e,#fad0c4);color:#000;font-size:16px;cursor:pointer;transition:.3s} button:hover{transform:scale(1.1)}
+
+input{padding:14px;border-radius:15px;border:none;font-size:16px;text-align:center;width:260px;outline:none}
+
+.floating span{position:absolute;bottom:-40px;animation:floatUp linear infinite;opacity:.8} .floating span:nth-child(1){left:10%;animation-duration:9s;font-size:18px} .floating span:nth-child(2){left:25%;animation-duration:12s;font-size:22px} .floating span:nth-child(3){left:45%;animation-duration:10s;font-size:20px} .floating span:nth-child(4){left:65%;animation-duration:14s;font-size:24px} .floating span:nth-child(5){left:85%;animation-duration:11s;font-size:19px}
+
+@keyframes floatUp{from{transform:translateY(0);opacity:0}to{transform:translateY(-110vh);opacity:1}} @keyframes glow{from{text-shadow:0 0 10px #fff}to{text-shadow:0 0 25px #ffdd99}}
+
+.firework{position:absolute;width:6px;height:6px;background:#ffd700;border-radius:50%;animation:boom 2s infinite} @keyframes boom{0%{transform:scale(0);opacity:1}100%{transform:scale(18);opacity:0}}
+
+.music{position:fixed;bottom:20px;right:20px;background:rgba(255,255,255,.2);padding:10px 14px;border-radius:30px;font-size:14px;cursor:pointer}
+
+.countdown{font-size:28px;margin-top:20px;letter-spacing:2px} </style>
+
+</head>
+<body><div class="floating">
+<span>💖</span><span>✨</span><span>🌸</span><span>🎆</span><span>💫</span>
+</div><div class="firework" style="top:20%;left:30%"></div>
+<div class="firework" style="top:40%;left:70%"></div>
+<div class="firework" style="top:60%;left:50%"></div><div class="slides" id="slides"><section>
+<h1>✨ Welcome 2026 ✨</h1>
+<p>A brand new year is here 🌙<br>Ek naya saal, nayi umeedein, nayi muskurahatein 💖</p>
+<button onclick="nextSlide()">Let's Start 🎉</button>
+</section><section>
+<h2>Before We Go Ahead 🤍</h2>
+<p>This moment is special ✨<br>Bas apna naam likh do 🌸</p>
+<input id="userName" placeholder="Enter your name 💫">
+<button onclick="saveName()">Continue 💖</button>
+</section><section>
+<h2 id="nameShow"></h2>
+<p>May 2026 be gentle on you 🌷<br>May it heal what hurt 🤍<br><br>Dua hai ye saal sukoon laaye 💫</p>
+<button onclick="nextSlide()">Next ✨</button>
+</section><section>
+<h2>Just One Honest Wish 💖</h2>
+<p>No pressure, no expectations 🌙<br>Dil se nikli ek chhoti si wish 🌸</p>
+<button onclick="nextSlide()">Next ✨</button>
+</section><section>
+<h2>Countdown to New Year 🎆</h2>
+<p>Every second brings new hope ✨</p>
+<div class="countdown" id="countdown"></div>
+<button onclick="nextSlide()">Celebrate 🎉</button>
+</section><section>
+<h2>One Last Thing 🌼</h2>
+<p>You are doing better than you think 🤍<br>Tum kaafi strong ho 💫</p>
+<button onclick="nextSlide()">Final ✨</button>
+</section><section>
+<h1>✨ Happy New Year ✨</h1>
+<p>Stay kind. Stay real. Stay you 💖<br><br>2026 ko apna saal bana lo 🌟</p>
+<h2>2026 💫</h2>
+</section></div><div class="music" onclick="toggleMusic()">🎵 Music</div>
+<audio id="bgMusic" loop>
+<source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio><script>
+let current=0;const slides=document.getElementById('slides');
+function nextSlide(){current++;slides.style.transform=`translateX(-${current*100}vw)`}
+
+function saveName(){
+ const n=document.getElementById('userName').value.trim();
+ if(!n){alert('Please enter your name 😊');return}
+ document.getElementById('nameShow').innerText=`Dear ${n} 💖`;
+ logName(n);
+ nextSlide();
+}
+
+// 🔹 GOOGLE SHEET LOGGING
+function logName(name){
+ fetch('https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse',{
+ method:'POST',
+ mode:'no-cors',
+ headers:{'Content-Type':'application/x-www-form-urlencoded'},
+ body:`entry.123456=${name}`
+ });
+}
+
+// 🔹 COUNTDOWN
+const target=new Date('Jan 1, 2026 00:00:00').getTime();
+setInterval(()=>{
+ const now=new Date().getTime();
+ const d=target-now;
+ if(d<0)return;
+ const days=Math.floor(d/(1000*60*60*24));
+ const hrs=Math.floor((d%(1000*60*60*24))/(1000*60*60));
+ const mins=Math.floor((d%(1000*60*60))/(1000*60));
+ const secs=Math.floor((d%(1000*60))/1000);
+ document.getElementById('countdown').innerText=
+ `${days}d ${hrs}h ${mins}m ${secs}s`;
+},1000);
+
+let music=false;
+function toggleMusic(){const m=document.getElementById('bgMusic');music=!music;music?m.play():m.pause()}
+</script></body>
+</html>
